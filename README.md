@@ -7,7 +7,7 @@ A modern Symfony authentication starter with **Login**, **Registration**, and **
 ## 🚀 Features
 
 - 🧑‍💻 User registration & login (Symfony Security)
-- 🔑 OAuth2 login with Google (via `knpuniversity/oauth2-client-bundle`)
+- 🔑 OAuth2 login with Google (via `hwi/oauth-bundle`)
 - 🔒 Password hashing with Symfony's security encoder
 - 🧱 Doctrine ORM & migrations ready
 - 🧭 Configurable redirect after login
