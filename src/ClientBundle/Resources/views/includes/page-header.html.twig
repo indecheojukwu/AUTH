@@ -1,0 +1,55 @@
+<div class="page-header d-print-none text-white
+{{ app.request.attributes.get('_route') == 'app_system_config_teams' ? 'd-none' : '' }}" >
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                {% set no_overview_routes = ['app_season_event_show', 'app_system_config_teams'] %}
+                {% if app.request.attributes.get('_route') in no_overview_routes or app.user.hasRole('ROLE_CONTENT_MANAGER') %}
+                {% else %}
+                <div class="page-pretitle">Overview</div>
+                {% if app.request.attributes.get('_route') == 'app_season_event_create' %}
+                <h2 class="page-title">CREATE EVENT</h2>
+                {% else %}
+                <h2 class="page-title">Dashboard</h2>
+                {% endif %}
+                {% endif %}
+            </div>
+
+            <!-- Page title actions -->
+            {% if app.user.hasRole('ROLE_SUPER_ADMIN') or app.user.hasRole('ROLE_ADMIN') %}
+            {% if app.request.attributes.get('_route') == 'app_dashboard' %}
+            <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                    <a href="#" class="btn btn-primary d-block d-sm-inline-block"  data-bs-toggle="modal" data-bs-target="#modal_create_season">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 5l0 14" />
+                            <path d="M5 12l14 0" />
+                        </svg>
+                        Create New Season
+                    </a>
+                </div>
+            </div>
+
+            {% elseif app.request.attributes.get('_route') == 'app_show_season' %}
+
+            {% if season_has_events %}
+            <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                    <!-- re work this before event 3 of the season -->
+                    <a href="{{ path('app_season_event_create', { 'season_slug': app.request.get('slug') }) }}" class="btn btn-primary d-block d-sm-inline-block"> <!-- data-bs-toggle="modal" data-bs-target="#modal-large"> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 5l0 14" />
+                            <path d="M5 12l14 0" />
+                        </svg>
+                        Create Event
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>

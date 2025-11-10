@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-THN795J93Z"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-THN795J93Z');
+        </script>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>3K FC Ticketing System  {% block title %}{% endblock %}</title>
+
+        <!-- CSS files -->
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link href="{{ asset('dist/css/tabler.min.css?1692870487') }}" rel="stylesheet"/>
+        <link href="{{ asset('dist/css/tabler-vendors.min.css?1692870487') }}" rel="stylesheet"/>
+        
+        <link rel="icon" type="image/png" href="{{ asset('images/icon') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{asset('images/icons/apple-touch-icon.png')}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{asset('images/icons/favicon-32x32.png')}}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/icons/favicon-16x16.png')}}">
+
+        <!-- Imported jquery for purposes of using the toastr library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- Tabler icons      -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+        <!-- timepicker -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+        <!-- Selectize  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css" integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+        <!-- Box Icons Link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+        <!-- EasyUI -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('easyui/easyui/themes/bootstrap/easyui.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('easyui/easyui/themes/icon.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('easyui/easyui/themes/color.css') }}">
+
+        <!-- simple notify css -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify/dist/simple-notify.css" />
+
+        <style>
+        .sn-notifications-container {
+            --sn-notify-width: 520px;
+        }
+        </style>
+
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_script_tags('app') }}
+        {% block styles %}{% endblock %}
+
+    </head>
+    <body data-turbo="false" style="overflow-x: hidden">
+        <div class="page">
+
+            <!-- Navbar -->
+            {% include "@admin/includes/nav-bar.html.twig" %}
+            {% include "@admin/includes/page-loader.html.twig" %}
+            <!-- Navbar -->
+
+            <div class="page-wrapper">
+                {% include "@admin/includes/page-header.html.twig" %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+            {% include "@admin/includes/background-process.html.twig" %}
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.Litepicker) {
+                const datepickerElements = document.querySelectorAll('.datepicker');
+
+                datepickerElements.forEach(element => {
+                    new Litepicker({
+                        minDate: new Date(),
+                        element: element,
+                        buttonText: {
+                            previousMonth: `<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>`,
+                            nextMonth: `<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>`,
+                        },
+                    });
+                });
+            }
+        });
+        </script>
+
+        <script>
+            toastr.options = {
+                'progressBar' : true,
+                "showMethod": "fadeIn",
+                "positionClass": "toast-bottom-right",
+                "hideMethod": "fadeOut",
+                "closeButton": true,
+                "newestOnTop": false,
+            }
+
+            {% for label, flashes in app.flashes %}
+            {% for flash in flashes %}
+            {% if label == 'error' %}
+                toastr.error('{{ flash | e('js') }}');
+            {% elseif label == 'success' %}
+                toastr.success('{{ flash | e('js') }}');
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </script>
+
+        <!-- selectize -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js" integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- ChartJS -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <!-- Dropzone -->
+        <script src="{{ asset('/dist/dropzone/dist/dropzone-min.js?1692870487') }}" defer></script>
+
+        <!-- litepicker -->
+        <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+
+        <!-- Apexcharts -->
+        <script src="{{ asset('dist/apexcharts/dist/apexcharts.min.js?1692870487') }}" defer></script>
+
+        <!-- Tabler Core -->
+        <script src="{{ asset('dist/js/tabler.min.js?1692870487') }}" defer></script>
+
+        <!-- EASYUI -->
+        <script type="text/javascript" src="{{ asset('easyui/easyui/jquery.easyui.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('easyui/datagrid-filter/datagrid-filter.js') }}"></script>
+
+        <!-- simple notify js -->
+        <script src="https://cdn.jsdelivr.net/npm/simple-notify/dist/simple-notify.min.js"></script>
+
+        {% block scripts %}{% endblock %}
+
+    </body>
+</html>

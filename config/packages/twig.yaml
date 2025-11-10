@@ -1,0 +1,10 @@
+twig:
+    file_name_pattern: '*.twig'
+    default_path: '%kernel.project_dir%/templates'
+    paths:
+        '%kernel.project_dir%/src/AdminBundle/Resources/views': admin
+        '%kernel.project_dir%/src/ClientBundle/Resources/views': client
+
+when@test:
+    twig:
+        strict_variables: true

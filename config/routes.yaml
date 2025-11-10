@@ -1,0 +1,15 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+admin_bundle_routes:
+    resource: '../src/AdminBundle/Controller/'
+    type: attribute
+    prefix: /booking
+
+client_bundle_routes:
+    resource: '../src/ClientBundle/Controller/'
+    type: attribute
+    prefix: /
